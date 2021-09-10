@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #root {
+            width: 200px
+        }
+
+        #views {
+            outline: solid 1px #666;
+            min-height: 200px;
+            margin-top: 20px;
+            height:100%
+        }
+
+        .view1 {
+            background-color: red;
+        }
+
+   
+
+        .view2 {
+            background-color: blue;
+        }
+
+    
+
+        .view1,
+        .view2 {
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="root">
+        <div>
+            <button type="button" id="btnView1">视图1</button>
+            <button type="button" id="btnView2">视图2</button>
+        </div>
+        <div id="views">
+
+        </div>
+    </div>
+
+    <script>
+
+        const viewsEl = document.getElementById("views");
+        function createView(content) {
+
+            viewsEl.innerHTML = content;
+        }
+
+
+        btnView1.addEventListener("click", function () {
+            const content = `
+                <div class="view1">
+                    <button id="viewBtn1">视图1 按钮1</button>
+                </div>
+            `
+            createView(content)
+
+            function onBtnClick(content) {
+                console.log("view1 btnClick1");
+            }
+
+            document.getElementById("viewBtn1").addEventListener("click", onBtnClick)
+
+        })
+
+        btnView2.addEventListener("click", function () {
+            const content = `
+            <div class="view2">
+                    <button id="viewBtn1">视图2 按钮1</button>
+                </div>
+            `
+            createView(content)
+
+            function onBtnClick(content) {
+                console.log("view2 btnClick1");
+            }
+
+            document.getElementById("viewBtn1").addEventListener("click", onBtnClick)
+
+        })
+
+
+        btnView1.click();
+
+    </script>
+
+</body>
+
+</html>
